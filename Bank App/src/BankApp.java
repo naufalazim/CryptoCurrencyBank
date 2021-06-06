@@ -2,6 +2,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -23,7 +24,6 @@ import java.awt.event.ActionEvent;
  * 1) MOHAMAD NAUFAL AZIM BIN MOHD FAUZAY (2200957)
  * 2) SYED ALIFF 
  * 
- * 
  */
 
 
@@ -35,10 +35,13 @@ public class BankApp {
 	private JTextField balanceField;
 	private JComboBox accountDropDown;
 	
+	ArrayList<Account> accounts = Utility.readFile("accounts.txt");
+	Account currentAccount;
+	
 	
 	//============File Reader:========================
 	private void initiateAccount() {
-	ArrayList<Account> accounts = Utility.readFile("accounts.txt");
+	
 	for (Account a : accounts) {
 		accountDropDown.addItem(a);
 	}
@@ -127,6 +130,7 @@ public class BankApp {
 		
 		
 		customerField = new JTextField();
+		customerField.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		customerField.setHorizontalAlignment(SwingConstants.LEFT);
 		customerField.setEditable(false);
 		customerField.setBounds(185, 75, 166, 32);
@@ -159,7 +163,7 @@ public class BankApp {
 		//Action Performed for 
 			public void actionPerformed(ActionEvent e) {
 				
-			Account currentAccount = (Account) accountDropDown.getSelectedItem();  //Abstract Object. So kene target Account = (Account)
+			currentAccount = (Account) accountDropDown.getSelectedItem();  //Abstract Object. So kene target Account = (Account)
 			customerField.setText(currentAccount.getAccountHolder()); //Take customerName om txt.
 			dateField.setText(currentAccount.getoDate()); 
 		    balanceField.setText(String.valueOf(currentAccount.Balance()));
@@ -173,28 +177,57 @@ public class BankApp {
 		
 		
 		//==============JButton Area:===================
-		JButton button = new JButton("Deposit");
-		button.addActionListener(new ActionListener() {
+		JButton depositButton = new JButton("Deposit");
+		depositButton.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+				
+				String amountString = JOptionPane.showInputDialog(depositButton, "Enter amount deposit: ", "Deposit", JOptionPane.PLAIN_MESSAGE);
+				double amount = Double.parseDouble(amountString);
+				currentAccount.deposit(amount);
+				balanceField.setText(String.valueOf(currentAccount.Balance()));
+				
 			}
 		});
-		button.setForeground(new Color(0, 0, 0));
-		button.setBackground(new Color(255, 222, 173));
-		button.setFont(new Font("Tahoma", Font.BOLD, 11));
-		button.setBounds(39, 179, 100, 45);
-		frame.getContentPane().add(button);
+		depositButton.setForeground(new Color(0, 0, 0));
+		depositButton.setBackground(new Color(255, 222, 173));
+		depositButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		depositButton.setBounds(39, 179, 100, 45);
+		frame.getContentPane().add(depositButton);
 		
-		JButton button2 = new JButton("Withdraw");
-		button2.setFont(new Font("Tahoma", Font.BOLD, 11));
-		button2.setBackground(new Color(255, 228, 181));
-		button2.setForeground(Color.BLACK);
-		button2.setBounds(386, 179, 100, 45);
-		frame.getContentPane().add(button2);
+		JButton withdrawButton = new JButton("Withdraw");
+		withdrawButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String amountString = JOptionPane.showInputDialog(withdrawButton,"Enter amount to withdraw: ", "Withdraw", JOptionPane.PLAIN_MESSAGE);
+				double amount = Double.parseDouble(amountString);
+				currentAccount.withdraw(amount);
+				balanceField.setText(String.valueOf(currentAccount.Balance()));
+				
+			}
+		});
+		withdrawButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		withdrawButton.setBackground(new Color(255, 228, 181));
+		withdrawButton.setForeground(Color.BLACK);
+		withdrawButton.setBounds(386, 179, 100, 45);
+		frame.getContentPane().add(withdrawButton);
 		
-		JButton button4 = new JButton("Transfer");
-		button4.setFont(new Font("Tahoma", Font.BOLD, 11));
-		button4.setBounds(215, 179, 100, 45);
-		frame.getContentPane().add(button4);
+		JButton transferButton = new JButton("Transfer");
+		transferButton.addActionListener(new ActionListener() {
+			
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+			}
+			
+			
+			
+			
+		});
+		transferButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		transferButton.setBounds(215, 179, 100, 45);
+		frame.getContentPane().add(transferButton);
 		
 		JButton exit = new JButton("Logout");
 		exit.addActionListener(new ActionListener() {
