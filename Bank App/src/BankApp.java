@@ -166,7 +166,7 @@ public class BankApp {
 			currentAccount = (Account) accountDropDown.getSelectedItem();  //Abstract Object. So kene target Account = (Account)
 			customerField.setText(currentAccount.getAccountHolder()); //Take customerName om txt.
 			dateField.setText(currentAccount.getoDate()); 
-		    balanceField.setText(String.valueOf(currentAccount.Balance()));
+		    balanceField.setText(String.valueOf(currentAccount.getBalance()));
 				
 			}
 		});
@@ -185,7 +185,7 @@ public class BankApp {
 				String amountString = JOptionPane.showInputDialog(depositButton, "Enter amount deposit: ", "Deposit", JOptionPane.PLAIN_MESSAGE);
 				double amount = Double.parseDouble(amountString);
 				currentAccount.deposit(amount);
-				balanceField.setText(String.valueOf(currentAccount.Balance()));
+				balanceField.setText(String.valueOf(currentAccount.getBalance()));
 				
 			}
 		});
@@ -201,7 +201,7 @@ public class BankApp {
 				String amountString = JOptionPane.showInputDialog(withdrawButton,"Enter amount to withdraw: ", "Withdraw", JOptionPane.PLAIN_MESSAGE);
 				double amount = Double.parseDouble(amountString);
 				currentAccount.withdraw(amount);
-				balanceField.setText(String.valueOf(currentAccount.Balance()));
+				balanceField.setText(String.valueOf(currentAccount.getBalance()));
 				
 			}
 		});
@@ -214,15 +214,35 @@ public class BankApp {
 		JButton transferButton = new JButton("Transfer");
 		transferButton.addActionListener(new ActionListener() {
 			
-			
+			//====================Transfer Money System==========================
 			public void actionPerformed(ActionEvent e) {
 				
+				//==============Enter Account Number=====================:
+				String accountNumber = JOptionPane.showInputDialog(transferButton,"Enter account number: ", "Transfer", JOptionPane.PLAIN_MESSAGE);
+				Account transferAccount = null;
+				
+				for(Account a : accounts) {
+					if(a.equals(accountNumber)) {
+						transferAccount = a;
+						break;
+					}
+				}
+
 				
 				
+				//=================Enter amount transfer==================================:
+				String amountString = JOptionPane.showInputDialog(transferButton,"Enter amount transfer: ","Transfer", JOptionPane.PLAIN_MESSAGE);
+				double amount = Double.parseDouble(amountString);
+				if(transferAccount != null) {
+					currentAccount.transfer(transferAccount, amount);
+					balanceField.setText(String.valueOf(currentAccount.getBalance()));
+					
+				}
+				
+				
+
+			
 			}
-			
-			
-			
 			
 		});
 		transferButton.setFont(new Font("Tahoma", Font.BOLD, 11));

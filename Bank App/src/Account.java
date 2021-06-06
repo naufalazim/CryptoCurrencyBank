@@ -62,8 +62,9 @@ public class Account {
 		return Date;
 	}
 	
+	
 	//balance:
-	public String Balance() {
+	public String getBalance() {
 		return  "RM " +balance;
 	}
 	
