@@ -29,6 +29,7 @@ public class Account {
 	public void withdraw(double amount) {
 		
 		balance = balance - amount;
+
 		
 	}
 	
@@ -61,7 +62,6 @@ public class Account {
 	public String getoDate() {
 		return Date;
 	}
-	
 	
 	//balance:
 	public String getBalance() {

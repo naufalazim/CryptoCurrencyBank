@@ -222,7 +222,7 @@ public class BankApp {
 				Account transferAccount = null;
 				
 				for(Account a : accounts) {
-					if(a.equals(accountNumber)) {
+					if(a.toString().equals(accountNumber)) {
 						transferAccount = a;
 						break;
 					}
@@ -230,7 +230,7 @@ public class BankApp {
 
 				
 				
-				//=================Enter amount transfer==================================:
+				//Enter amount transfer:
 				String amountString = JOptionPane.showInputDialog(transferButton,"Enter amount transfer: ","Transfer", JOptionPane.PLAIN_MESSAGE);
 				double amount = Double.parseDouble(amountString);
 				if(transferAccount != null) {
