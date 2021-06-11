@@ -186,6 +186,7 @@ public class BankApp {
 				double amount = Double.parseDouble(amountString);
 				currentAccount.deposit(amount);
 				balanceField.setText(String.valueOf(currentAccount.getBalance()));
+				Utility.writeFile(accounts, "accounts.txt");
 				
 			}
 		});
@@ -195,6 +196,8 @@ public class BankApp {
 		depositButton.setBounds(39, 179, 100, 45);
 		frame.getContentPane().add(depositButton);
 		
+		
+		
 		JButton withdrawButton = new JButton("Withdraw");
 		withdrawButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -202,6 +205,7 @@ public class BankApp {
 				double amount = Double.parseDouble(amountString);
 				currentAccount.withdraw(amount);
 				balanceField.setText(String.valueOf(currentAccount.getBalance()));
+				Utility.writeFile(accounts, "accounts.txt");
 				
 			}
 		});
