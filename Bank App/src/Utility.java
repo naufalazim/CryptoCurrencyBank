@@ -8,21 +8,25 @@ public class Utility {
 	
 	
 	
-	public static ArrayList<Account> readFile(String fileName) {
+	public static ArrayList<Account> readFile(String fileName) {  //Extends for Account Page using ArrayList!
 		
 		
-		//=======Setup Array List:=======
-		ArrayList<Account> accounts = new ArrayList<>();
+		//========== Setup Array List ==============
+		
+		ArrayList<Account> accounts = new ArrayList<>(); //create new account object
 		
 		
-		//===========File Reader & Exception Handling==============
+		//=========== File Reader & Exception Handling ==============
 		
 		try {
 			
 			FileReader read = new FileReader(fileName);
 			BufferedReader buffer = new BufferedReader(read);
 			String line;
+			
+			
 			while((line= buffer.readLine())  != null) {
+				
 				String[] currentAccount = line.split("<>");
 				String accNumber = currentAccount[0];
 				String accHolder = currentAccount[1];
@@ -30,11 +34,13 @@ public class Utility {
 				double baki = Double.parseDouble(currentAccount[3]); // Read double --> String
 				
 				
-				//Create Account 
+		//============= Create Account ===================
+				
 				Account acc = new Account(accNumber, accHolder, date, baki);
 				accounts.add(acc);
 				
 			}
+			
 			buffer.close();
 			
 		}
@@ -51,6 +57,7 @@ public class Utility {
 	public static void writeFile(ArrayList <Account> accounts, String fileName) {
 		
 			try {
+				
 				FileWriter fw = new FileWriter(fileName);
 				BufferedWriter bw = new BufferedWriter(fw);
 				for(Account a : accounts) {
@@ -68,3 +75,4 @@ public class Utility {
 	}
 
 
+//Copyright by Naufal Azim 2021

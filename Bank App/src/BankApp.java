@@ -1,5 +1,4 @@
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -14,20 +13,21 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 
-/*
- * PROJECT JAVA BY MOHAMAD NAUFAL AZIM 2021
+/*  ASSIGNMENT OBJECT ORIENTED PROGRAMMING 
  * 
- * KUMPULAN 2: CRYPTO BANK UPNM
+ *  MOHAMAD NAUFAL AZIM BIN MOHD FAUZAY 2200957
  * 
- * AHLI KUMPULAN:
+ * 	SYED ALIFF HAKIMI  2191080 
  * 
- * 1) MOHAMAD NAUFAL AZIM BIN MOHD FAUZAY (2200957)
- * 2) SYED ALIFF 
- * 
+ *  18/6/2021
  */
 
 
-public class BankApp {
+
+
+
+
+public class BankApp  {
 
 	private JFrame frame;
 	private JTextField customerField;
@@ -35,11 +35,19 @@ public class BankApp {
 	private JTextField balanceField;
 	private JComboBox accountDropDown;
 	
+	
+	
+	
+//===============Array list on Utility ============================:  
+	
+	
 	ArrayList<Account> accounts = Utility.readFile("accounts.txt");
 	Account currentAccount;
 	
 	
-	//============File Reader:========================
+	//============ FILE READER SISTEM ========================
+	
+	
 	private void initiateAccount() {
 	
 	for (Account a : accounts) {
@@ -47,33 +55,11 @@ public class BankApp {
 	}
 	
 	}
-
 	
 	
-//=============Application Launch=============================
 	
 	
-	public static void main(String[] args) {
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					
-					BankApp window = new BankApp();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		
-
-		
-	}
-
-
-	
-	//=============Create Application======================
+	//============= APPLICATION SYSTEM ======================
 	
 	
 	public BankApp() {
@@ -83,10 +69,15 @@ public class BankApp {
 
 	
 	
-//========================JFrame Content=============================
+	
+	
+	
+//======================== CONTENT GUI =============================
+	
+	
 	private void initialize() {
 		
-		frame = new JFrame("Crypto Bank Pokpal");
+		frame = new JFrame("Kripto Bank UPNM");
 		frame.getContentPane().setForeground(Color.BLACK);
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 563, 388);
@@ -94,7 +85,9 @@ public class BankApp {
 		frame.getContentPane().setLayout(null);
 		
 		
-		//=================Label Area:====================
+		//================= JLABEL AREA ====================
+		
+		
 		JLabel Label = new JLabel("Account Number");
 		Label.setHorizontalAlignment(SwingConstants.LEFT);
 		Label.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -113,9 +106,9 @@ public class BankApp {
 		Label3.setBounds(361, 30, 74, 20);
 		frame.getContentPane().add(Label3);
 		
-		JLabel Label4 = new JLabel("Your Balance");
+		JLabel Label4 = new JLabel("Balance (\u0243)");
 		Label4.setHorizontalAlignment(SwingConstants.CENTER);
-		Label4.setFont(new Font("Tahoma", Font.BOLD, 13));
+		Label4.setFont(new Font("Tahoma", Font.BOLD, 15));
 		Label4.setBounds(73, 257, 104, 45);
 		frame.getContentPane().add(Label4);
 		
@@ -126,8 +119,7 @@ public class BankApp {
 		frame.getContentPane().add(titleBank);
 		
 		
-		//============JTextField Area:=============
-		
+		//================== JTEXTFIELD PART ===========================
 		
 		customerField = new JTextField();
 		customerField.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
@@ -155,28 +147,35 @@ public class BankApp {
 		balanceField.setColumns(10);
 		
 		
-		//=============JCOMBObox Area:===============
+		
+		//================= JCOMBOBOX PART ========================
+		
 		accountDropDown = new JComboBox();
 		accountDropDown.addActionListener(new ActionListener() {
 			
 			
-		//Action Performed for 
+		//=========================== Action Performed for JCOMBOBOX ==================================
+			
+			
 			public void actionPerformed(ActionEvent e) {
 				
 			currentAccount = (Account) accountDropDown.getSelectedItem();  //Abstract Object. So kene target Account = (Account)
-			customerField.setText(currentAccount.getAccountHolder()); //Take customerName om txt.
+			customerField.setText(currentAccount.getAccountHolder()); //Take customerName on txt file.
 			dateField.setText(currentAccount.getoDate()); 
 		    balanceField.setText(String.valueOf(currentAccount.getBalance()));
 				
 			}
 		});
-		accountDropDown.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		accountDropDown.setBackground(new Color(255, 255, 204));
-		accountDropDown.setBounds(185, 118, 166, 22);
-		frame.getContentPane().add(accountDropDown);
+			accountDropDown.setFont(new Font("Tahoma", Font.PLAIN, 13));
+			accountDropDown.setBackground(new Color(255, 255, 204));
+			accountDropDown.setBounds(185, 118, 166, 22);
+			frame.getContentPane().add(accountDropDown);
 		
 		
-		//==============JButton Area:===================
+		
+		//==============DEPOSIT BUTTON:=====================
+		
+		
 		JButton depositButton = new JButton("Deposit");
 		depositButton.addActionListener(new ActionListener() {
 			
@@ -190,6 +189,10 @@ public class BankApp {
 				
 			}
 		});
+		
+		
+		
+		//==========GUI DEPOSIT Button ===============
 		depositButton.setForeground(new Color(0, 0, 0));
 		depositButton.setBackground(new Color(255, 222, 173));
 		depositButton.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -197,6 +200,9 @@ public class BankApp {
 		frame.getContentPane().add(depositButton);
 		
 		
+		
+		
+		//==============WITHDRAW Button==================
 		
 		JButton withdrawButton = new JButton("Withdraw");
 		withdrawButton.addActionListener(new ActionListener() {
@@ -209,19 +215,35 @@ public class BankApp {
 				
 			}
 		});
+		
+		//=================WITHDRAW BUTTON GUI=====================
+		
 		withdrawButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		withdrawButton.setBackground(new Color(255, 228, 181));
 		withdrawButton.setForeground(Color.BLACK);
 		withdrawButton.setBounds(386, 179, 100, 45);
 		frame.getContentPane().add(withdrawButton);
 		
+		
+		
+		
+		
+		
+		// ===== Button TRANSFER====
+		
 		JButton transferButton = new JButton("Transfer");
 		transferButton.addActionListener(new ActionListener() {
 			
-			//====================Transfer Money System==========================
+			
+			
+			//====================SISTEM TRANSFER MONEY==========================
+			
+			
 			public void actionPerformed(ActionEvent e) {
 				
 				//==============Enter Account Number=====================:
+				
+				
 				String accountNumber = JOptionPane.showInputDialog(transferButton,"Enter account number: ", "Transfer", JOptionPane.PLAIN_MESSAGE);
 				Account transferAccount = null;
 				
@@ -231,10 +253,7 @@ public class BankApp {
 						break;
 					}
 				}
-
 				
-				
-				//Enter amount transfer:
 				String amountString = JOptionPane.showInputDialog(transferButton,"Enter amount transfer: ","Transfer", JOptionPane.PLAIN_MESSAGE);
 				double amount = Double.parseDouble(amountString);
 				if(transferAccount != null) {
@@ -242,25 +261,29 @@ public class BankApp {
 					balanceField.setText(String.valueOf(currentAccount.getBalance()));
 					
 				}
-				
-				
-
 			
 			}
 			
 		});
+		
+		
+		//=================Transfer Button GUI====================
+		
 		transferButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		transferButton.setBounds(215, 179, 100, 45);
 		frame.getContentPane().add(transferButton);
 		
 		JButton exit = new JButton("Logout");
 		exit.addActionListener(new ActionListener() {
-			//Logout Button Action:
 			
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
+		
+		
+		
+		
 		exit.setBackground(new Color(255, 255, 240));
 		exit.setForeground(new Color(0, 0, 0));
 		exit.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -269,4 +292,19 @@ public class BankApp {
 		
 
 	}
+	
+	
+	
+	//============Application Launch!===============
+	
+	public static void main(String[] args) {
+		
+		BankApp window = new BankApp();
+		window.frame.setVisible(true);
+
+		
+	}
 }
+
+
+//Copyright by Naufal Azim 2021
