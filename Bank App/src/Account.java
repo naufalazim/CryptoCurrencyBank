@@ -22,18 +22,13 @@ public class Account {
 		
 		balance = balance + amount;
 	}
-	
-	
 	//================ System Withdraw duit:================
 	
 	public void withdraw(double amount) {
 		
-		balance = balance - amount;
-
-		
+		balance = balance - amount;	
 	}
 	
-
 	//=================System Transfer=========================
 	
 	public void transfer(Account a, double amount) {

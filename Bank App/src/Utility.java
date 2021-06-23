@@ -7,13 +7,14 @@ import java.util.ArrayList;
 public class Utility {
 	
 	
-	
-	public static ArrayList<Account> readFile(String fileName) {  //Extends for Account Page using ArrayList!
+	//Extends for Account Page using ArrayList!
+	public static ArrayList<Account> readFile(String fileName) {  
 		
 		
 		//========== Setup Array List ==============
 		
-		ArrayList<Account> accounts = new ArrayList<>(); //create new account object
+		//create new account object
+		ArrayList<Account> accounts = new ArrayList<>(); 
 		
 		
 		//=========== File Reader & Exception Handling ==============

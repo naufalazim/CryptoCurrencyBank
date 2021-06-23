@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.SwingConstants;
@@ -24,9 +25,6 @@ import java.awt.event.ActionEvent;
 
 
 
-
-
-
 public class BankApp  {
 
 	private JFrame frame;
@@ -34,18 +32,20 @@ public class BankApp  {
 	private JTextField dateField;
 	private JTextField balanceField;
 	private JComboBox accountDropDown;
+	private ImageIcon picture;
 	
 	
 	
 	
-//===============Array list on Utility ============================:  
+	
+//=============== Array list on Utility ============================:  
 	
 	
 	ArrayList<Account> accounts = Utility.readFile("accounts.txt");
 	Account currentAccount;
 	
 	
-	//============ FILE READER SISTEM ========================
+//============ FILE READER SISTEM ========================
 	
 	
 	private void initiateAccount() {
@@ -59,7 +59,7 @@ public class BankApp  {
 	
 	
 	
-	//============= APPLICATION SYSTEM ======================
+//============= APPLICATION SYSTEM ======================
 	
 	
 	public BankApp() {
@@ -77,7 +77,8 @@ public class BankApp  {
 	
 	private void initialize() {
 		
-		frame = new JFrame("Kripto Bank UPNM");
+		
+		frame = new JFrame("Kripto Bank");
 		frame.getContentPane().setForeground(Color.BLACK);
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 563, 388);
@@ -112,7 +113,7 @@ public class BankApp  {
 		Label4.setBounds(73, 257, 104, 45);
 		frame.getContentPane().add(Label4);
 		
-		JLabel titleBank = new JLabel("Crypto Bank UPNM");
+		JLabel titleBank = new JLabel("Crypto Bank");
 		titleBank.setHorizontalAlignment(SwingConstants.CENTER);
 		titleBank.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 20));
 		titleBank.setBounds(158, 11, 193, 53);
@@ -181,12 +182,22 @@ public class BankApp  {
 			
 			public void actionPerformed(ActionEvent e) {
 				
+			try {
+				
+			if(true) {
 				String amountString = JOptionPane.showInputDialog(depositButton, "Enter amount deposit: ", "Deposit", JOptionPane.PLAIN_MESSAGE);
 				double amount = Double.parseDouble(amountString);
 				currentAccount.deposit(amount);
 				balanceField.setText(String.valueOf(currentAccount.getBalance()));
 				Utility.writeFile(accounts, "accounts.txt");
-				
+			  }
+			}
+			
+			catch(Exception e1) {
+				JOptionPane.showMessageDialog(depositButton, "Please put numbers only!","Error", JOptionPane.ERROR_MESSAGE);
+			}
+			
+			
 			}
 		});
 		
@@ -207,11 +218,20 @@ public class BankApp  {
 		JButton withdrawButton = new JButton("Withdraw");
 		withdrawButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+			try {
+				
+			if(true) {
 				String amountString = JOptionPane.showInputDialog(withdrawButton,"Enter amount to withdraw: ", "Withdraw", JOptionPane.PLAIN_MESSAGE);
 				double amount = Double.parseDouble(amountString);
 				currentAccount.withdraw(amount);
 				balanceField.setText(String.valueOf(currentAccount.getBalance()));
 				Utility.writeFile(accounts, "accounts.txt");
+				}
+			
+			} catch(Exception e1) {
+				JOptionPane.showMessageDialog(withdrawButton, "Please put numbers only!","Error", JOptionPane.ERROR_MESSAGE);
+			}
 				
 			}
 		});
@@ -241,7 +261,7 @@ public class BankApp  {
 			
 			public void actionPerformed(ActionEvent e) {
 				
-				//==============Enter Account Number=====================:
+			//==============Enter Account Number=====================:
 				
 				
 				String accountNumber = JOptionPane.showInputDialog(transferButton,"Enter account number: ", "Transfer", JOptionPane.PLAIN_MESSAGE);
@@ -254,7 +274,8 @@ public class BankApp  {
 					}
 				}
 				
-				String amountString = JOptionPane.showInputDialog(transferButton,"Enter amount transfer: ","Transfer", JOptionPane.PLAIN_MESSAGE);
+				String amountString = JOptionPane.showInputDialog(transferButton,"Enter amount transfer: ",
+						"Transfer", JOptionPane.PLAIN_MESSAGE);
 				double amount = Double.parseDouble(amountString);
 				if(transferAccount != null) {
 					currentAccount.transfer(transferAccount, amount);
@@ -278,6 +299,7 @@ public class BankApp  {
 			
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
+				
 			}
 		});
 		
