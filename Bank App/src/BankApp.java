@@ -78,7 +78,7 @@ public class BankApp  {
 	private void initialize() {
 		
 		
-		frame = new JFrame("Kripto Bank");
+		frame = new JFrame("Crypto Currency");
 		frame.getContentPane().setForeground(Color.BLACK);
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 563, 388);
@@ -115,7 +115,7 @@ public class BankApp  {
 		
 		JLabel titleBank = new JLabel("Crypto Bank");
 		titleBank.setHorizontalAlignment(SwingConstants.CENTER);
-		titleBank.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 20));
+		titleBank.setFont(new Font("Serif", Font.BOLD, 30));
 		titleBank.setBounds(158, 11, 193, 53);
 		frame.getContentPane().add(titleBank);
 		
@@ -160,8 +160,8 @@ public class BankApp  {
 			
 			public void actionPerformed(ActionEvent e) {
 				
-			currentAccount = (Account) accountDropDown.getSelectedItem();  //Abstract Object. So kene target Account = (Account)
-			customerField.setText(currentAccount.getAccountHolder()); //Take customerName on txt file.
+			currentAccount = (Account) accountDropDown.getSelectedItem(); 
+			customerField.setText(currentAccount.getAccountHolder()); 
 			dateField.setText(currentAccount.getoDate()); 
 		    balanceField.setText(String.valueOf(currentAccount.getBalance()));
 				
@@ -236,6 +236,8 @@ public class BankApp  {
 			}
 		});
 		
+		
+		
 		//=================WITHDRAW BUTTON GUI=====================
 		
 		withdrawButton.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -306,11 +308,17 @@ public class BankApp  {
 		
 		
 		
-		exit.setBackground(new Color(255, 255, 240));
+		exit.setBackground(Color.PINK);
 		exit.setForeground(new Color(0, 0, 0));
 		exit.setFont(new Font("Tahoma", Font.BOLD, 11));
 		exit.setBounds(437, 293, 100, 45);
 		frame.getContentPane().add(exit);
+		
+		JLabel labelbaru = new JLabel("");
+		ImageIcon img = new ImageIcon(this.getClass().getResource("/Logo.jpg"));
+		labelbaru.setIcon(img);
+		labelbaru.setBounds(168, 11, 372, 253);
+		frame.getContentPane().add(labelbaru);
 		
 
 	}
