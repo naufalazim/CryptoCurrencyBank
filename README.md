@@ -8,4 +8,5 @@
 <li> Transfer currency to another account </li>
 <li> Login Account </li>
 
-Screenshot 2021-08-07 at 8 10 07 PM](https://user-images.githubusercontent.com/62175429/128599804-d42e55ee-81ed-4ae1-a18a-780a372f9c79.png)
+
+https://github.com/naufalazim/bankApplication/blob/main/Images/Interface.png
