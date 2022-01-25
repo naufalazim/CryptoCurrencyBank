@@ -1,17 +1,21 @@
-<h1> Cryptocurrency System Management (JAVA) </h1>
+# Bank System Management: Crypto Edition! 💰
 
+Problem Statement: Created a project based on <b>Java</b>.
 
-<p> I completed this project using JAVA language (Graphic User Interface) </p>
+<ul>
+  <li>Assignment project OOP</li>
+  <li>Subject: Java OOP</li>
+</ul>
 
-<h2>#For Your Information!</h2>
-* I am using JAVA 8.1 for this project
+## Component in the system
 
-  
- <h3>SYSTEM</h3>
+<ul>
 <li> Deposit currency </li>
 <li> Withdrawal currency </li>
 <li> Transfer currency to another account </li>
 <li> Login Account </li>
-<br></br>
+<ul>
 
+  
+### Image
 ![Image of Yaktocat](https://github.com/naufalazim/bankApplication/blob/main/Images/Interface.png)
