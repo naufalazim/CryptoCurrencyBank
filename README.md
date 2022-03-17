@@ -1,4 +1,4 @@
-# Bank System Management: Crypto Edition! 💰
+# `Crypto Bank💰`
 
 Problem Statement: Created a project based on <b>Java</b>.
 
